@@ -36,12 +36,11 @@ Modified: 2026-01-16
 
 <strong>Servers & Network</strong>
 <ul>
-  <li>ZimaBlade NAS <span class="meta">2×1TB mirror</span></li>
-  <li>ThinkCentre M910q <span class="meta">i7-6700T · Primary</span></li>
-  <li>ThinkCentre fleet <span class="meta">VMs · HA</span></li>
-  <li>Hetzner Dedicated <span class="meta">Ryzen 3700X · 64GB</span></li>
+  <li>ZimaBlade NAS <span class="meta">[tiny] 2×1TB mirror</span></li>
+  <li>ThinkCentre fleet [x3] <span class="meta">VMs · Docker · HA</span></li>
+  <li>Hetzner Dedicated Server <span class="meta">Ryzen 3700X · 64GB</span></li>
   <li>Ubiquiti ERPoE-5</li>
-  <li>Ubiquiti 6 Lite APs</li>
+  <li>Ubiquiti U6 Lite APs</li>
   <li>Netgear switches</li>
 </ul>
 
@@ -55,15 +54,15 @@ Modified: 2026-01-16
       <li>Proxmox Backup Server</li>
       <li>Prometheus/Grafana</li>
       <li>DNS/DHCP/AdGuard</li>
+      <li>Development ENV VMs</li>
     </ul>
   </div>
   <div>
     <h4>Datacenter VMs</h4>
     <ul>
       <li>Jellyfin</li>
-      <li>NAS (OMV/Samba/NFS)</li>
+      <li>Remote NAS</li>
       <li>Monitoring stack</li>
-      <li>Bastion host</li>
     </ul>
   </div>
   <div>

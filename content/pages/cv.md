@@ -79,3 +79,9 @@ DevOps Engineer bridging infrastructure and development. Cloud-native solutions,
     </dl>
   </div>
 </div>
+
+<div class="cv-qr">
+  <button class="print-btn" onclick="window.print()">Print</button>
+  <span>Scan for online version</span>
+  <img src="/theme/images/qr-cv.svg" alt="QR code to CV">
+</div>

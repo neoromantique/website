@@ -7,7 +7,7 @@ Modified: 2026-01-16
 
 I’m Dave. DevOps Engineer from a small Polish village, surrounded by unfinished projects.
 
-I build things that (sometimes)work and attempt to keep old things running. I strive to self-host my own infrastructure, shoot film, own physical media, maintain 90s cars, and resurrect hardware most people would rather throw away. I buy used, fix before I replace, document before it disappears, and race to see the limits of what I maintain.
+I build things that (sometimes)work and attempt to keep old things running. I strive to self-host my own infrastructure, shoot film, own physical media, maintain 90s cars, and resurrect hardware most people would rather throw away. I buy used, fix before I replace, and race to see the limits of what I maintain.
 
 I’m a FOSS maximalist, right-to-repair advocate, and technology optimist. I believe the best tools are the ones you control and understand.
 
