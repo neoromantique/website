@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block header_title %}Blog{% endblock %}
+{% block subtitle %}Field Notes from the Build Bench{% endblock %}
+
+{% block content %}
+  <h2>Recent</h2>
+  <ul>
+  {% for article in articles %}
+    <li>
+      <a href="{{ SITEURL }}/{{ article.url }}"><strong>{{ article.title }}</strong></a>
+      <span class="meta">{{ article.date.strftime('%Y-%m-%d') }}</span><br>
+      {{ article.summary|striptags }}
+    </li>
+  {% endfor %}
+  </ul>
+
+  <h2>Subscribe</h2>
+  <p>Monthly update with the best lessons and links.</p>
+{% endblock %}
+
+{% block footer %}
+  <span class="meta">{{ articles|length }} posts in archive</span>
+{% endblock %}

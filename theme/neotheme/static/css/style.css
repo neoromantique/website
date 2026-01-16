@@ -1,0 +1,572 @@
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f4f4f4;
+  --text-primary: #111111;
+  --text-muted: #666666;
+  --accent: #d35400;
+  --border: #d9d9d9;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #0f0f0f;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #e0e0e0;
+    --text-muted: #888888;
+    --accent: #e67e22;
+    --border: #2b2b2b;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 32px 24px;
+  font: 14px/1.6 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  max-width: 680px;
+}
+
+/* Typography scale: h1=24px, h2=18px, body=14px, small=12px */
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0 0 8px;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 24px 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+h3 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 16px 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+h4 {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 12px 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+p { margin: 0 0 12px; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+nav {
+  margin: 12px 0 24px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+nav a {
+  margin-right: 20px;
+  color: var(--text-primary);
+  border-bottom: 1px solid transparent;
+}
+nav a:hover {
+  text-decoration: none;
+  border-bottom-color: var(--accent);
+}
+nav a[aria-current="page"] {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+}
+li {
+  margin-bottom: 8px;
+  padding-left: 16px;
+  position: relative;
+}
+li::before {
+  content: '*';
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+}
+
+.meta {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+strong { font-weight: 600; }
+
+footer {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* CV page - two column for A4 */
+body.cv-page {
+  max-width: 210mm;
+}
+
+body.cv-page h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+body.cv-page > main > p {
+  margin-bottom: 8px;
+}
+
+.cv-contact {
+  font-size: 12px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+.cv-contact a { color: var(--text-primary); }
+.cv-contact a:hover { color: var(--accent); }
+
+.cv-columns {
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  gap: 24px;
+}
+
+.cv-exp { margin-bottom: 16px; }
+.cv-exp:last-child { margin-bottom: 0; }
+.cv-exp-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+.cv-exp-head span {
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.cv-exp p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.cv-skills dt {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-top: 8px;
+}
+.cv-skills dt:first-child { margin-top: 0; }
+.cv-skills dd {
+  margin: 2px 0 0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.print-btn {
+  font: inherit;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  cursor: pointer;
+}
+.print-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  .cv-columns {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .cv-side { order: -1; }
+}
+
+@media print {
+  @page { size: A4; margin: 12mm 15mm; }
+  body, body.cv-page {
+    font-size: 9pt;
+    line-height: 1.4;
+    padding: 0;
+    max-width: 100%;
+    background: white;
+    color: black;
+  }
+  a { color: inherit; }
+  nav, .print-btn { display: none; }
+  h2 { color: black; border-bottom: 1px solid #ccc; padding-bottom: 2px; }
+  .cv-columns { gap: 16px; }
+  .cv-exp { margin-bottom: 10px; }
+  .cv-exp-head, .cv-exp p { font-size: 9pt; }
+  .cv-exp p { line-height: 1.5; }
+  .cv-skills dt { font-size: 8pt; color: black; }
+  .cv-skills dd { font-size: 9pt; }
+}
+
+/* === BLOG POST STYLES === */
+
+/* Blog images */
+article img, main img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  margin: 16px 0;
+  display: block;
+}
+
+/* Floating images */
+.img-float-right {
+  float: right;
+  max-width: 50%;
+  margin: 0 0 16px 24px;
+}
+
+.img-float-left {
+  float: left;
+  max-width: 50%;
+  margin: 0 24px 16px 0;
+}
+
+figure { margin: 16px 0; }
+figcaption {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* PhotoSwipe gallery grid */
+.blog-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 24px 0;
+}
+
+.blog-gallery img {
+  width: 100%;
+  height: 128px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  margin: 0;
+}
+
+.blog-gallery img:hover { border-color: var(--accent); }
+
+/* Retro touches (hybrid design) */
+.ascii-divider {
+  text-align: center;
+  color: var(--text-muted);
+  margin: 32px 0;
+  letter-spacing: 0.5em;
+  font-size: 12px;
+}
+
+.note-block, .retro-frame {
+  border: 2px solid var(--border);
+  padding: 16px;
+  margin: 16px 0;
+  background: var(--bg-secondary);
+}
+
+.retro-frame img {
+  margin: 0;
+  border: none;
+}
+
+/* Vinyl table */
+.vinyl-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 12px;
+}
+
+.vinyl-table th {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  padding: 8px;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+.vinyl-table td {
+  border: 1px solid var(--border);
+  padding: 8px;
+}
+
+.vinyl-table tr:hover { background: var(--bg-secondary); }
+
+/* PGP block */
+.pgp-block {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
+  border-left: 4px solid var(--accent);
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.pgp-block pre {
+  margin: 0 0 12px;
+  overflow-x: auto;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* Gear page layout */
+.gear-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+  margin-bottom: 16px;
+}
+
+.gear-section {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+}
+
+.gear-section h3 {
+  margin-top: 0;
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.gear-section ul {
+  margin-bottom: 0;
+}
+
+/* Homelab infrastructure section */
+.homelab-section {
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  padding: 20px;
+  margin: 24px 0;
+  background: var(--bg-secondary);
+}
+
+.homelab-section h2:first-child {
+  margin-top: 0;
+  text-align: center;
+  font-size: 16px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+/* Lab photo within homelab section */
+.lab-photo-inline {
+  float: right;
+  margin: 0 0 16px 24px;
+  transform: rotate(-2deg);
+  padding: 12px 12px 32px 12px;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  max-width: 200px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .lab-photo-inline {
+    background: #ffffff;
+  }
+}
+
+/* Compact computing section */
+.computing-compact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 20px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin-bottom: 24px;
+  font-size: 12px;
+}
+
+.computing-compact h3 {
+  margin: 0 0 8px;
+  font-size: 11px;
+}
+
+.computing-compact ul {
+  margin: 0;
+}
+
+.computing-compact li {
+  margin-bottom: 4px;
+  font-size: 11px;
+}
+
+/* Ultra-dense hobbies grid */
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.hobbies-grid > div {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 11px;
+}
+
+.hobbies-grid h3 {
+  margin: 0 0 6px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.hobbies-grid h4 {
+  margin: 8px 0 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.hobbies-grid h3:first-child,
+.hobbies-grid h4:first-child {
+  margin-top: 0;
+}
+
+.hobbies-grid ul {
+  margin: 0 0 8px;
+}
+
+.hobbies-grid li {
+  margin-bottom: 3px;
+  font-size: 11px;
+  padding-left: 12px;
+}
+
+.hobbies-grid .meta {
+  font-size: 10px;
+}
+
+.hobbies-grid img {
+  max-width: 120px;
+  margin: 0 auto 8px;
+  display: block;
+}
+
+/* Services grid within homelab section */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.services-grid > div {
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 8px 10px;
+  background: var(--bg-primary);
+}
+
+.services-grid h4 {
+  margin: 0 0 6px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.services-grid ul {
+  margin: 0;
+  font-size: 11px;
+}
+
+.services-grid li {
+  margin-bottom: 3px;
+  padding-left: 12px;
+  font-size: 11px;
+}
+
+.services-grid li::before {
+  content: '·';
+  color: var(--text-muted);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .img-float-right, .img-float-left {
+    float: none;
+    max-width: 100%;
+    margin: 16px 0;
+  }
+
+  .blog-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gear-grid-2col,
+  .computing-compact,
+  .hobbies-grid,
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hobbies-grid,
+  .services-grid {
+    gap: 8px;
+  }
+
+  .lab-photo-inline {
+    float: none;
+    margin: 0 auto 16px;
+    display: block;
+  }
+}

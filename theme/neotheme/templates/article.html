@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+  <p class="meta">{{ article.date.strftime('%B %d, %Y') }}</p>
+  {{ article.content }}
+{% endblock %}
+
+{% block footer %}
+  <a href="{{ SITEURL }}/blog.html">← Back to Blog</a>
+{% endblock %}

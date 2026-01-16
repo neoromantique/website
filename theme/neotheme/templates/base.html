@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ page.title if page else article.title if article else SITENAME }}{% endblock %} — Neo</title>
+
+  {% if article %}
+    <meta name="description" content="{{ article.summary|striptags }}">
+    <meta name="author" content="{{ article.author }}">
+    <meta name="date" content="{{ article.date.strftime('%Y-%m-%d') }}">
+    <meta property="og:title" content="{{ article.title }}">
+    <meta property="og:description" content="{{ article.summary|striptags }}">
+    <meta property="og:type" content="article">
+  {% endif %}
+
+  <link rel="icon" type="image/png" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/favicon.png">
+  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css">
+  {% block extra_head %}{% endblock %}
+</head>
+<body{% block body_class %}{% endblock %}>
+  <header>
+    <h1>{% block header_title %}{{ page.title if page else article.title if article else SITENAME }}{% endblock %}</h1>
+    <p class="subtitle">{% block subtitle %}{{ page.subtitle if page else article.subtitle if article else SITESUBTITLE }}{% endblock %}</p>
+
+    <nav>
+      <a href="{{ SITEURL }}/index.html">Home</a>
+      <a href="{{ SITEURL }}/pages/about.html">About</a>
+      <a href="{{ SITEURL }}/pages/projects.html">Projects</a>
+      <a href="{{ SITEURL }}/blog.html">Blog</a>
+      <a href="{{ SITEURL }}/pages/homelab.html">Homelab/Gear</a>
+      <a href="{{ SITEURL }}/pages/transport.html">Transport</a>
+      <a href="{{ SITEURL }}/pages/cv.html">CV</a>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    {% block footer %}
+    <span class="meta">{% block footer_text %}{% if page and page.modified %}Last updated: {{ page.modified.strftime('%Y-%m-%d') }}{% elif article and article.modified %}Last updated: {{ article.modified.strftime('%Y-%m-%d') }}{% else %}Last updated: Date not set{% endif %}{% endblock %}</span>
+    {% endblock %}
+  </footer>
+
+  {% block extra_js %}{% endblock %}
+</body>
+</html>
